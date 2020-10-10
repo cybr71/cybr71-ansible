@@ -1,12 +1,18 @@
-cat cp.yml
 ---
 - hosts: app
   tasks:
+  - name: Ansible copy file to remote server
+    copy:
+      src: /root/ansible/host
+      dest: /root/hosts
+      owner: root
+      group: root
+      mode: 0777
+
   - name: Install epel-release
     yum:
-      name: nginx
-      state: present
-      
+      name: 'epel-release, unzip, telnet, curl, wget'
+      state: absent
   - name: Stop services
     service:
       name: httpd
