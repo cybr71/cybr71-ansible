@@ -1,0 +1,23 @@
+cat /etc/ansible/hosts
+[app]
+target1.test.com
+192.168.0.106
+#######################
+
+cat cp.yml
+---
+- hosts: app
+  tasks:
+  - name: Ansible copy file to remote server
+    copy:
+      src: /root/ansible/host
+      dest: /root/hosts
+      owner: root
+      group: root
+      mode: 0777
+########################
+
+ansible-playbook cp.yml
+
+
+
