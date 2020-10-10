@@ -1,0 +1,18 @@
+cat cp.yml
+---
+- hosts: app
+  tasks:
+  - name: Install epel-release
+    yum:
+      name: nginx
+      state: present
+      
+  - name: Stop services
+    service:
+      name: httpd
+      state: stopped
+
+  - name: Start services
+    service:
+      name: nginx
+      state: started
