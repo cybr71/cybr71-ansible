@@ -22,3 +22,21 @@
     service:
       name: nginx
       state: started
+      
+###########Another way###############
+cat cp.yml
+---
+- hosts: app
+  tasks:
+  - name: Install packages
+    yum:
+      name:
+        - httpd
+        - nginx
+      update_cache: yes
+      state: present
+  - name: Stop services
+    service:
+      name: httpd
+      state: started
+
